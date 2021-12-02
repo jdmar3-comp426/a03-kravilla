@@ -115,7 +115,21 @@ export const allCarStats = {
  *
  * }
  */
+function makerHybridStats() {
+    let temp = [];
+    mpg_data.forEach( item => {
+        if(item.hybrid){
+            temp.forEach(object => {
+                if(object.make == item.make){
+                }
+            })
+        }
+    });
+}
+function avgMpgYearHybrid() {
+
+}
 export const moreStats = {
-    makerHybrids: undefined,
-    avgMpgByYearAndHybrid: undefined
+    makerHybrids: makerHybridStats,
+    avgMpgByYearAndHybrid: avgMpgYearHybrid
 };
