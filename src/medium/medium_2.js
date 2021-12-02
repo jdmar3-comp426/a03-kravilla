@@ -116,15 +116,36 @@ export const allCarStats = {
  * }
  */
 function makerHybridStats() {
-    let temp = [];
+    let result = [];
     mpg_data.forEach( item => {
         if(item.hybrid){
-            temp.forEach(object => {
+            result.forEach(object => {
                 if(object.make == item.make){
+                    object.hybrids.push(item.id);
+                } else {
+                    let hybridarray = [];
+                    let temp = {
+                        make: item.make,
+                        hybrids: hybridarray
+                    };
+                    temp.hybridarray.push(item.id);
+                    result.push(temp);
+
                 }
             })
+            if(result.length == 0){
+                let hybridarray = [];
+                    let temp = {
+                        make: item.make,
+                        hybrids: hybridarray
+                    };
+                    temp.hybrids.push(item.id);
+                    result.push(temp);
+            }
         }
     });
+    result.sort(function(a,b) {b.hybrids.length - a.hybrids.length} );
+    return result;
 }
 function avgMpgYearHybrid() {
 
