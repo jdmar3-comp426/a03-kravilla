@@ -28,13 +28,13 @@ export const repeat = (fn, n, ...params) => {
  *   10 times.
  */
 export const repeatDemo = () => {
-    function hw(string) {
-        console.log(string);
+    function hw(param) {
+        console.log(param);
     }
     let log = hw;
     let param = [];
     param.push("Hello, World!");
-    repeat(log, 10, "Hello, World!");
+    repeat(log, 10, "Hello, world!");
 };
 
 
