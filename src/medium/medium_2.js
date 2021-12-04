@@ -148,9 +148,40 @@ function makerHybridStats() {
     return result;
 }
 function avgMpgYearHybrid() {
-
+    let result = {};
+    mpg_data.forEach( item => {
+        // if the year doesn't exist yet
+        if(result[item.year] == undefined){
+            result[item.year] = {
+                hybrid: {
+                    city: [],
+                    highway: []
+                },
+                notHybrid: {
+                    city:[],
+                    highway:[]
+                }
+            }
+        }
+        // input specific mileages based on hybrid or not
+        if(item.hybrid) {
+            result[item.year]["hybrid"]["city"].push(item.city_mpg);
+            result[item.year]["hybrid"]["highway"].push(item.highway_mpg);
+        } else {
+            result[item.year]["notHybrid"]["city"].push(item.city_mpg);
+            result[item.year]["notHybrid"]["highway"].push(item.highway_mpg);
+        }
+    });
+    // convert raw array data into averages
+    for(let key in obj){
+        result[key]["hybrid"]["city"] = getStatistics(result[key]["hybrid"]["city"]).mean;
+        result[key]["hybrid"]["highway"] = getStatistics(result[key]["hybrid"]["highway"]).mean;
+        result[key]["notHybrid"]["city"] = getStatistics(result[key]["notHybrid"]["city"]).mean;
+        result[key]["notHybrid"]["highway"] = getStatistics(result[key]["notHybrid"]["highway"]).mean;
+    }
+    result;
 }
 export const moreStats = {
-    makerHybrids: makerHybridStats,
-    avgMpgByYearAndHybrid: avgMpgYearHybrid
+    makerHybrids: makerHybridStats(),
+    avgMpgByYearAndHybrid: avgMpgYearHybrid()
 };
