@@ -210,7 +210,7 @@ export const anEvenIsOdd = (arr) => {
  */
 export const hasExactly = (arr, test, n) => {
     let sum = 0;
-    for(let i = 0; i < arr.length; i+=2) {
+    for(let i = 0; i < arr.length; i++) {
         if(test(arr[i])){
             sum++;
         }
