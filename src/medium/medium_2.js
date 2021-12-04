@@ -128,7 +128,7 @@ function makerHybridStats() {
                         make: item.make,
                         hybrids: hybridarray
                     };
-                    temp.hybridarray.push(item.id);
+                    temp.hybrids.push(item.id);
                     result.push(temp);
 
                 }
