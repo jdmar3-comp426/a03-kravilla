@@ -118,30 +118,24 @@ export const allCarStats = {
 function makerHybridStats() {
     let result = [];
     mpg_data.forEach( item => {
+        let exist = false;
         if(item.hybrid){
             result.forEach(object => {
-                if(object.make == item.make){
-                    object.hybrids.push(item.id);
-                } else {
-                    let hybridarray = [];
-                    let temp = {
-                        make: item.make,
-                        hybrids: hybridarray
-                    };
-                    temp.hybrids.push(item.id);
-                    result.push(temp);
-
+                if(object["make"] == item.make){
+                    object["hybrids"].push(item.id);
+                    exist = true;
                 }
             })
-            if(result.length == 0){
+            if(exist == false){
                 let hybridarray = [];
-                    let temp = {
-                        make: item.make,
-                        hybrids: hybridarray
-                    };
-                    temp.hybrids.push(item.id);
-                    result.push(temp);
-            }
+                hybridarray.push(item.id);
+                let temp = {
+                    make: item.make,
+                    hybrids: hybridarray
+                };
+                result.push(temp);
+            } 
+            
         }
     });
     result.sort(function(a,b) {b.hybrids.length - a.hybrids.length} );
