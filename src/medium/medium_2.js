@@ -179,7 +179,7 @@ function avgMpgYearHybrid() {
         result[key]["notHybrid"]["city"] = getStatistics(result[key]["notHybrid"]["city"]).mean;
         result[key]["notHybrid"]["highway"] = getStatistics(result[key]["notHybrid"]["highway"]).mean;
     }
-    result;
+    return result;
 }
 export const moreStats = {
     makerHybrids: makerHybridStats(),
