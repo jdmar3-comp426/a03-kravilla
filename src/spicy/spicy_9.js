@@ -34,7 +34,7 @@ export const repeatDemo = () => {
     let log = hw;
     let param = [];
     param.push("Hello, World!");
-    repeat(log, 10, ...param);
+    repeat(log, 10, "Hello, World!");
 };
 
 
