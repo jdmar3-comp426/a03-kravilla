@@ -167,7 +167,7 @@ function avgMpgYearHybrid() {
         }
     });
     // convert raw array data into averages
-    for(let key in obj){
+    for(let key in result){
         result[key]["hybrid"]["city"] = getStatistics(result[key]["hybrid"]["city"]).mean;
         result[key]["hybrid"]["highway"] = getStatistics(result[key]["hybrid"]["highway"]).mean;
         result[key]["notHybrid"]["city"] = getStatistics(result[key]["notHybrid"]["city"]).mean;
