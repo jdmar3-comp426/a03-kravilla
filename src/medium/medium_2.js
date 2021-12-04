@@ -129,27 +129,6 @@ function makerHybridStats() {
         } else if (result[item.make]!==undefined && item.hybrid) {
             object["hybrids"].push(item.id);
         }
-        /*
-        let exist = false;
-        if(item.hybrid){
-            result.forEach(object => {
-                if(object["make"] == item.make){
-                    object["hybrids"].push(item.id);
-                    exist = true;
-                }
-            })
-            if(exist == false){
-                let hybridarray = [];
-                hybridarray.push(item.id);
-                let temp = {
-                    make: item.make,
-                    hybrids: hybridarray
-                };
-                result.push(temp);
-            } 
-            
-        }
-        */
     });
     result.sort(function(a,b) {b.hybrids.length - a.hybrids.length} );
     return result;
